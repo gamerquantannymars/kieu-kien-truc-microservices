@@ -1,0 +1,41 @@
+version: '3'
+services:
+  book-service:
+    build:
+      context: ./book-service
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongodb
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/bookdb
+
+  user-service:
+    build:
+      context: ./user-service
+    ports:
+      - '3001:3001'
+    depends_on:
+      - mongodb
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/userdb
+
+  review-service:
+    build:
+      context: ./review-service
+    ports:
+      - '3002:3002'
+    depends_on:
+      - mongodb
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/reviewdb
+
+  mongodb:
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
