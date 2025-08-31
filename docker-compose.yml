@@ -8,7 +8,7 @@ services:
     depends_on:
       - mongodb
     environment:
-      - MONGODB_URI=mongodb://mongodb:27017/bookdb  # Connection string to MongoDB for book service
+      MONGODB_URI: mongodb://mongodb:27017/bookdb  # Connection string to MongoDB for book service
 
   user-service:
     build:
@@ -18,7 +18,7 @@ services:
     depends_on:
       - mongodb
     environment:
-      - MONGODB_URI=mongodb://mongodb:27017/userdb  # Connection string to MongoDB for user service
+      MONGODB_URI: mongodb://mongodb:27017/userdb  # Connection string to MongoDB for user service
 
   review-service:
     build:
@@ -28,7 +28,7 @@ services:
     depends_on:
       - mongodb
     environment:
-      - MONGODB_URI=mongodb://mongodb:27017/reviewdb  # Connection string to MongoDB for review service
+      MONGODB_URI: mongodb://mongodb:27017/reviewdb  # Connection string to MongoDB for review service
 
   mongodb:
     image: mongo
