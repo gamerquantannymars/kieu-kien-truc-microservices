@@ -4,9 +4,9 @@ services:
     build:
       context: ./book-service
     ports:
-      - '3000:3000'
+      - '3000:3000'  # Expose port 3000 for book service
     depends_on:
-      - mongodb
+      - mongodb  # Ensure mongodb service is started before book-service
     environment:
       MONGODB_URI: mongodb://mongodb:27017/bookdb  # Connection string to MongoDB for book service
 
@@ -14,9 +14,9 @@ services:
     build:
       context: ./user-service
     ports:
-      - '3001:3001'
+      - '3001:3001'  # Expose port 3001 for user service
     depends_on:
-      - mongodb
+      - mongodb  # Ensure mongodb service is started before user-service
     environment:
       MONGODB_URI: mongodb://mongodb:27017/userdb  # Connection string to MongoDB for user service
 
@@ -24,9 +24,9 @@ services:
     build:
       context: ./review-service
     ports:
-      - '3002:3002'
+      - '3002:3002'  # Expose port 3002 for review service
     depends_on:
-      - mongodb
+      - mongodb  # Ensure mongodb service is started before review-service
     environment:
       MONGODB_URI: mongodb://mongodb:27017/reviewdb  # Connection string to MongoDB for review service
 
