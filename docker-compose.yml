@@ -8,7 +8,7 @@ services:
     depends_on:
       - mongodb
     environment:
-      - MONGODB_URI=mongodb://mongodb:27017/bookdb
+      - MONGODB_URI=mongodb://mongodb:27017/bookdb  # Connection string to MongoDB for book service
 
   user-service:
     build:
@@ -18,7 +18,7 @@ services:
     depends_on:
       - mongodb
     environment:
-      - MONGODB_URI=mongodb://mongodb:27017/userdb
+      - MONGODB_URI=mongodb://mongodb:27017/userdb  # Connection string to MongoDB for user service
 
   review-service:
     build:
@@ -28,14 +28,14 @@ services:
     depends_on:
       - mongodb
     environment:
-      - MONGODB_URI=mongodb://mongodb:27017/reviewdb
+      - MONGODB_URI=mongodb://mongodb:27017/reviewdb  # Connection string to MongoDB for review service
 
   mongodb:
     image: mongo
     ports:
-      - '27017:27017'
+      - '27017:27017'  # MongoDB default port
     volumes:
-      - mongo-data:/data/db
+      - mongo-data:/data/db  # Persistent data volume for MongoDB
 
 volumes:
-  mongo-data:
+  mongo-data:  # Define the named volume for MongoDB data
